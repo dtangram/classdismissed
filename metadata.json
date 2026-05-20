@@ -1,0 +1,6 @@
+{
+  "name": "ClassDismissed",
+  "description": "AI-powered modernization engine that transforms messy legacy JavaScript and Class-based React into polished Functional Components with TypeScript.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API", "modernization", "refactoring", "linting"]
+}
