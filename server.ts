@@ -4,9 +4,6 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type } from "@google/genai";
 import * as prettier from "prettier";
-import dotenv from "dotenv";
-
-dotenv.config();
 
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,
@@ -111,7 +108,12 @@ async function startServer() {
       res.json(parsed);
     } catch (error: any) {
       console.error("Modernization failed:", error);
-      res.status(500).json({ error: error.message || "Internal server error" });
+      const isQuota = error?.message?.includes("RESOURCE_EXHAUSTED") || error?.message?.includes("429");
+      res.status(isQuota ? 429 : 500).json({ 
+        error: isQuota 
+          ? "API quota exceeded. Please try again later or upgrade your Gemini plan."
+          : error.message || "Internal server error"
+      });
     }
   });
 
