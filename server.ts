@@ -35,7 +35,7 @@ Return a valid JSON object matching the requested schema.`;
 
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = Number(process.env.PORT) || 3000;
 
   app.use(express.json({ limit: '1mb' }));
 
