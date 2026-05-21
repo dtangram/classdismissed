@@ -49,7 +49,7 @@ async function startServer() {
       }
 
       const result = await ai.models.generateContent({
-        model: "gemini-2.5-flash-preview-05-20",
+        model: "gemini-2.5-flash",
         contents: `Modernize the following code and generate tests:\n\n${code}`,
         config: {
           systemInstruction: SYSTEM_PROMPT,
