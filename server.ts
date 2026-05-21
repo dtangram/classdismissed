@@ -52,7 +52,7 @@ async function startServer() {
       }
 
       const result = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-2.0-flash",
         contents: `Modernize the following code and generate tests:\n\n${code}`,
         config: {
           systemInstruction: SYSTEM_PROMPT,
@@ -82,7 +82,13 @@ async function startServer() {
         throw new Error("Failed to generate modernization result.");
       }
 
-      const parsed = JSON.parse(result.text);
+      let parsed;
+      try {
+        parsed = JSON.parse(result.text);
+      } catch (e) {
+        console.error("Raw Gemini response:", result.text); // shows the actual error
+        throw new Error("Gemini returned invalid JSON: " + result.text.slice(0, 200));
+      }
 
       // Properly format the component and unit test files using Prettier
       const prettierConfig: prettier.Options = {
