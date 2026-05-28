@@ -1,9 +1,11 @@
-import 'dotenv/config';
 import express from "express";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI, Type } from "@google/genai";
 import * as prettier from "prettier";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const ai = new GoogleGenAI({
   apiKey: process.env.GEMINI_API_KEY,

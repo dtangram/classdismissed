@@ -9,7 +9,7 @@ export interface ModernizationResult {
   };
 }
 
-export async function modernizeCode(code: string): Promise<ModernizationResult> {
+export const modernizeCode = async (code: string): Promise<ModernizationResult> => {
   const response = await fetch("/api/modernize", {
     method: "POST",
     headers: {
@@ -24,9 +24,9 @@ export async function modernizeCode(code: string): Promise<ModernizationResult> 
   }
 
   return response.json() as Promise<ModernizationResult>;
-}
+};
 
-export async function formatCode(code: string, language: string): Promise<string> {
+export const formatCode = async (code: string, language: string): Promise<string> => {
   const response = await fetch("/api/format", {
     method: "POST",
     headers: {
@@ -42,4 +42,4 @@ export async function formatCode(code: string, language: string): Promise<string
 
   const data = await response.json();
   return data.formatted;
-}
+};
