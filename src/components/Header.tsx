@@ -15,7 +15,7 @@ const Header = ({ loading, onModernize }: HeaderProps) => {
         </span>
         <section>
           <h1 className="text-sm font-bold tracking-tight text-gray-900">
-            CODEREFINERY{' '}
+            CLASSDISMISSED{' '}
             <span className="text-[10px] font-mono text-gray-400 ml-1 font-normal uppercase tracking-widest">
               v1.2.0
             </span>
